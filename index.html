@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVA AI Ассистент</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #10131c;
+  color: white;
+}
+header {
+  padding: 20px;
+  text-align: center;
+  background: #1b2030;
+  font-size: 23px;
+  font-weight: bold;
+}
+main {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 15px;
+}
+#chat {
+  height: 350px;
+  overflow-y: auto;
+  background: #1b2030;
+  padding: 15px;
+  border-radius: 15px;
+}
+.msg {
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background: #292f43;
+  overflow-wrap: anywhere;
+}
+.user {
+  background: #285de5;
+}
+form {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+input {
+  min-width: 0;
+  flex: 1;
+  padding: 14px;
+  border: 0;
+  border-radius: 10px;
+}
+button {
+  padding: 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #5578ff;
+  color: white;
+  font-weight: bold;
+}
+.note {
+  color: #b9c0d0;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+<header>🤖 AVA AI Ассистент</header>
+<main>
+  <h2>Сәлем! Мен AVA 👋</h2>
+  <p>Саған қалай көмектесе аламын?</p>
+  <div id="chat">
+    <div class="msg">AVA: Сәлем! Маған хабарлама жаз 😊</div>
+  </div>
+  <form id="form">
+    <input id="message" placeholder="Хабарлама жаз..." required>
+    <button type="submit">Жіберу</button>
+  </form>
+  <p class="note">Бұл бастапқы демо. Нақты AI және WhatsApp қосу үшін сервер қажет.</p>
+</main>
+<script>
+const chat = document.getElementById("chat");
+const form = document.getElementById("form");
+const input = document.getElementById("message");form.addEventListener("submit", function(e) {
+e.preventDefault();
+const text = input.value.trim();
+if (!text) return;
+
+const userMsg = document.createElement("div");
+userMsg.className = "msg user";
+userMsg.textContent = "Сен: " + text;
+chat.appendChild(userMsg);
+
+const reply = document.createElement("div");
+reply.className = "msg";
+reply.textContent =
+"AVA: Хабарламаңды алдым! Нақты AI-ды қосу үшін келесі кезеңде API байланыстырамыз.";
+chat.appendChild(reply);
+
+input.value = "";
+chat.scrollTop = chat.scrollHeight;
+});
+</script>
+
+</body>
+</html>
